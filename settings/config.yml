@@ -1,0 +1,82 @@
+# ----------------------------------------------------
+# Haxball Bot 1.0.1 Configuration File
+# Haxball Nick: rana
+# Discord: @17pxy
+# QUEDA TOTALMENTE PROHIBIDA LA VENTA DE ESTE SCRIPT
+# MANTENER CREDITOS AL CREADOR
+# ----------------------------------------------------
+
+##########################################
+#                 GENERAL                #
+##########################################
+
+# BOT PREFIX
+PREFIX: "h!"
+
+# BOTNAME
+BOTNAME: "HulkMagrelo"
+
+# EMBEDCOLOR | 
+EMBEDCOLOR: "GREEN"
+
+# OWNER-NAME | 
+OWNERNAME: "17pxy (rana)" # Discord username
+
+# OWNER-ID | 
+OWNERID: "852300860176597002" 
+
+# TOKEN | 
+TOKEN: 'MTIxNTY1MjMxMzY1MDE3MTkyNQ.GPlMcY.Zj6a1y_Lt1KzUmwb4BeEM1Gi3nKym1D7xOsV3o'
+
+# GUILD-ID | 
+GUILDID: '1215638834130194492'
+
+# DATABASE |
+mongooseConnectionString: 'mongodb+srv://odiasgd27:barnett271004@haxball.2lemzud.mongodb.net/'
+
+##########################################
+#              Haxball Config            #
+##########################################
+
+HAXBALL: # CONFIGURACION DE HAXBALL
+  ROOM_NAME: "🧌 Futsal do Hulk - X4 🧌"
+  COMMUNITY_NAME: Futsal do Hulk"
+  DISCORD_NAME: "Futsal do Hulk"
+  TOKEN: "thr1.AAAAAGXrFp3OFxz02m-wKw.TKIEi1qLOtw"
+  MAX_USERS: 21
+  PUBLIC: true
+  BOT_NO_PLAYER: true
+  MODE: "JUEGAN_TODOS" # JUEGAN_TODOS
+  HOST_FULL_PASS: "example123"
+  MAX_SLOTS: 20 # MAX SLOTS SET PASSWORD
+  MIN_PLAYERS_FOR_STATS: 8
+  SCORE_LIMIT: 5
+  TIME_LIMIT: 10
+  DISCORD: "https://discord.gg/HjNcuD2QPS"
+  CHANNELS: # CANALES PARA REGISTROS
+    IP_LOGS: "1215642582336675871"
+    NICKNAME_LOGS: "1215657033441747025"
+    PLAYER_LEAVE_LOGS: "1215657129747423362"
+    BAN_LOGS: "1215657177453297715"
+    LLAMAR_ADMIN: "1215657205085372478"
+
+##########################################
+#             Activity Config            #
+##########################################
+
+ACTIVITY:
+  ACTIVITIES:  # Placeholders 
+    ACTIVITY1: "Haxball Bot"
+    ACTIVITY2: "Creado por rana"
+    ACTIVITY3: ".gg/haxballbot"
+    ACTIVITYTYPE1: "PLAYING"
+    ACTIVITYTYPE2: "WATCHING"
+    ACTIVITYTYPE3: "COMPETING"
+    STATUS: "DND"
+    INTERVAL: "3500" # ms
+
+##########################################
+#        Haxball Bot By rana (17pxy)    #
+#             Comunidad Haxball          #
+##########################################
+
