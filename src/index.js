@@ -52,7 +52,7 @@ for (var i = 2; i <= totalLevels; i++) {
 
 haxball.then(async (HBInit) => {
   const geo = [
-    { code: "ly", lat: -34.49999999999999, lon: -58.299999999999996 },
+    { code: "br", lat: -19.912998, lon: -43.940933 },
   ];
 
   const room = HBInit({
@@ -93,7 +93,7 @@ haxball.then(async (HBInit) => {
   let blues = players.filter((x) => x.team == 2);
   let spectators = players.filter((x) => x.team == 0);
 
-  room.setCustomStadium(futsalx3);
+  room.setCustomStadium(futsalx4);
   room.setScoreLimit(config.HAXBALL.SCORE_LIMIT);
   room.setTimeLimit(config.HAXBALL.TIME_LIMIT);
   room.setTeamsLock(true);
@@ -110,51 +110,51 @@ haxball.then(async (HBInit) => {
       const msg = message.content.substring(1);
       let args = msg.split(" ");
 
-      if (args[0] == "jugadores") {
+      if (args[0] == "jogadores") {
         const playersEmbed = new MessageEmbed()
           .setColor("GREEN")
           .setTitle(`${config.HAXBALL.ROOM_NAME}`)
           .setDescription(
-            `Esta es la lista de jugadores en linea:\n\n${playerDate}`
+            `A lista de jogadores online é esta:\n\n${playerDate}`
           );
         message.reply({ embeds: [playersEmbed] });
       } else if (args[0] == "haxban") {
         if (!message.member.permissions.has("ADMINISTRATOR"))
-          return message.reply("No tienes permisos para usar este comando!");
+          return message.reply("Você não tem permissão pra usar esse comando!");
 
         const userID = args[1];
         if (!userID)
           return message.reply({
-            content: "Tienes que poner la id del usuario!",
+            content: "Você precisa colocar a id do usuário",
           });
-        const banReason = args.slice(2).join(" ") || "No se proporciono razon";
+        const banReason = args.slice(2).join(" ") || "Você não colocou motivo";
 
         if (!playerNames.filter((x) => x == userID))
-          return message.reply({ content: "Este usuario no esta jugando!" });
+          return message.reply({ content: "Este usuário não está jogando!" });
 
         room.kickPlayer(userID, banReason, true);
 
         const banEmbed = new MessageEmbed()
           .setColor("GREEN")
-          .setTitle("Usuario Baneado")
+          .setTitle("Usuário Banido")
           .setDescription(
-            `Un usuario fue baneado correctamente del host ${config.HAXBALL.ROOM_NAME}`
+            `Um usuário foi banido corretamenta da ${config.HAXBALL.ROOM_NAME}`
           )
           .addFields(
-            { name: `Usuario Baneado`, value: `${banName}` },
+            { name: `Usuário Banido`, value: `${banName}` },
             { name: `ID`, value: `${userID}` },
             { name: `Razon`, value: `${banReason}` },
-            { name: `Baneado por`, value: `${message.member}` }
+            { name: `Banido por`, value: `${message.member}` }
           );
 
         message.reply({ embeds: [banEmbed] });
       } else if (args[0] == "anunciohax") {
         if (!message.member.permissions.has("ADMINISTRATOR"))
-          return message.reply("No tienes permisos para usar este comando!");
+          return message.reply("Você não tem permissão pra usar esse comando!");
 
         const mensaje = args.slice(1).join(" ");
         if (!mensaje)
-          return message.reply({ content: "Tienes que poner un mensaje!" });
+          return message.reply({ content: "Tens que colocar uma mensagem!" });
 
         room.sendAnnouncement(
           `[ANUNCIO] » ${mensaje}`,
@@ -168,9 +168,9 @@ haxball.then(async (HBInit) => {
         });
       } else if (args[0] == "clearbans") {
         if (!message.member.permissions.has("ADMINISTRATOR"))
-          return message.reply("No tienes permisos para usar este comando!");
+          return message.reply("Você não tem permissão pra usar esse comando!");
         room.clearBans();
-        message.reply({ content: "Todos los bans fueron borrados!" });
+        message.reply({ content: "Todos os bans foram limpos" });
       }
     }
   });
@@ -181,7 +181,7 @@ haxball.then(async (HBInit) => {
 
   room.onPlayerJoin = async function (player) {
     room.sendAnnouncement(
-      `━━━━━━━━━━━━━┛ ${client.config.HAXBALL.COMMUNITY_NAME} 🐸 Discord: ${client.config.HAXBALL.DISCORD} ┗━━━━━━━━━━━━━\n[👤] ¡Hola ${player.name}! Recuerda seguir las reglas para no ser sancionado\n[🔝] ¡Compite por ser el mejor en el host! Usa '!me' para ver tus estadisticas.\n[🛒] ¡Compra en la tienda! Puedes comprar size, chatcolor, prefix, vip, premium y mucho mas usando coins y el comando !tienda.\n[⚠️] ¡Llama a un administrador! ¿Hay un troll o alguien muy toxico? Usa el comando '!llamaradmin' junto al nick del usuario y será sancionado.\n━━━━━━━━━━━━━┓ ${client.config.HAXBALL.COMMUNITY_NAME} 🐸 Discord: ${client.config.HAXBALL.DISCORD} ┏━━━━━━━━━━━━━`,
+      `━━━━━━━━━━━━━┛ ${client.config.HAXBALL.COMMUNITY_NAME} 🐸 Discord: ${client.config.HAXBALL.DISCORD} ┗━━━━━━━━━━━━━\n[👤] ¡Hola ${player.name}! Lembre-se de seguir as regras para não ser punido!\n[🔝] ¡Seja o melhor jogador da sala! Use !me para ver suas estatísticas!.\n[🛒] ¡Compra en la tienda! Puedes comprar size, chatcolor, prefix, vip, premium y mucho mas usando coins y el comando !tienda.\n[⚠️] ¡Llama a un administrador! ¿Hay un troll o alguien muy toxico? Usa el comando '!llamaradmin' junto al nick del usuario y será sancionado.\n━━━━━━━━━━━━━┓ ${client.config.HAXBALL.COMMUNITY_NAME} 🐸 Discord: ${client.config.HAXBALL.DISCORD} ┏━━━━━━━━━━━━━`,
       player.id,
       0x41fe3b,
       "small",
@@ -268,7 +268,7 @@ haxball.then(async (HBInit) => {
       if (!playerData.isAdminOFI) {
         room.kickPlayer(
           player.id,
-          "El host esta lleno y no sos administrador!",
+          "O host está cheio. Portanto, há uma vaga reservada apenas para adms.",
           false
         );
       }
@@ -713,18 +713,17 @@ haxball.then(async (HBInit) => {
   };
 
   room.onPlayerChat = function (player, msg) {
-
     if (msg.startsWith("!")) {
       async function commands() {
         msg = msg.substr(1);
         let args = msg.split(" ");
         args[0] = args[0].toLowerCase();
-
+  
         if (args[0] == "discordsync" && args.length >= 2) {
           const code = args[1];
           const checkCode = await syncModel.findOne({ code: code });
           if (!checkCode) return;
-
+  
           await statsDB.findOneAndUpdate(
             { name: player.name },
             { discordID: checkCode.userID }
@@ -734,7 +733,7 @@ haxball.then(async (HBInit) => {
               .get(client.config.GUILDID)
               .members.fetch(`${checkCode.userID}`)
           ).roles.add("1121118676901449809");
-
+  
           sendAnnounce(
             `El usuario ${player.name} vinculó su cuenta de discord con haxball!`,
             null,
@@ -745,7 +744,7 @@ haxball.then(async (HBInit) => {
         } else if (args[0] == "blacklist" && player.admin && args.length >= 2) {
           let usuario = args.slice(1).join(" ");
           const userData = await statsDB.findOne({ name: usuario });
-
+  
           if (!userData) {
             sendAnnounce(
               `[❗] ${usuario} no esta registrado!`,
@@ -765,7 +764,7 @@ haxball.then(async (HBInit) => {
             );
             return false;
           }
-
+  
           userData.isBlacklisted = true;
           await userData.save();
           room.kickPlayer(
@@ -773,7 +772,7 @@ haxball.then(async (HBInit) => {
             `Blacklisteado por ${player.name}`,
             true
           );
-
+  
           sendAnnounce(
             `[⚠️] El usuario ${usuario} fue blacklisteado por ${player.name}!`,
             null,
@@ -784,7 +783,7 @@ haxball.then(async (HBInit) => {
         } else if (args[0] == "unban" && player.admin && args.length >= 2) {
           let usuario = args.slice(1).join(" ");
           const userData = await statsDB.findOne({ name: usuario });
-
+  
           if (!userData) {
             sendAnnounce(
               `[❗] ${usuario} no esta registrado!`,
@@ -804,11 +803,11 @@ haxball.then(async (HBInit) => {
             );
             return false;
           }
-
+  
           userData.isBanned = false;
           await userData.save();
           room.clearBan(userData.id);
-
+  
           sendAnnounce(
             `[❗] El usuario ${usuario} fue unbaneado por ${player.name}!`,
             null,
@@ -857,7 +856,7 @@ haxball.then(async (HBInit) => {
         } else if (args[0] == "size") {
           const userData = await statsDB.findOne({ name: player.name });
           if (!userData.isVIP && !userData.sizeAccess) return false;
-
+  
           const size = args[1];
           if (isNaN(size)) {
             room.setPlayerDiscProperties(player.id, { radius: 15 });
@@ -916,7 +915,7 @@ haxball.then(async (HBInit) => {
               1
             );
             sendAnnounce(
-              `┃ !stats, !me, !bb, !nv, !size, !estadio, !ds, !llamaradmin <razon>, !coins, !tienda, !comprar, !coinspay, !claimcoins, !poderes, !powershot, !gigante, !todoschiquitos`,
+              `┃ !stats, !me, !bb, !nv, !size, !estadio, !ds, !chamaradm <razon>, !coins, !tienda, !comprar, !coinspay, !claimcoins, !poderes, !powershot, !gigante, !todoschiquitos`,
               player.id,
               0xffffff,
               "small-bold",
@@ -948,33 +947,43 @@ haxball.then(async (HBInit) => {
           );
         } else if (args[0] == "ds" || args[0] == "discord") {
           sendAnnounce(
-            `[❗] Nuestro discord es: https://discord.gg/6k4tTkexdD`,
+            `[❗] O nosso Discord é: https://discord.gg/HjNcuD2QPS`,
             player.id,
             0x5ca3f7,
             "bold",
             1
           );
-        } else if (args[0] == "llamaradmin" && args.length > 2) {
+        } else if (args[0] == "chamaradm" && args.length >= 2) {
           const llamadaRazon = args.slice(1).join(" ");
-          client.channels.cache
-            .get(client.config.HAXBALL.CHANNELS.LLAMAR_ADMIN)
-            .send({
-              embeds: [
-                new MessageEmbed()
-                  .setColor("ORANGE")
-                  .setTitle("ALERTA")
-                  .setDescription(
-                    `El usuario **${player.name}** uso el comando !llamaradmin.\nRazón: **${llamadaRazon}**\nHost: **${config.HAXBALL.ROOM_NAME}**`
-                  ),
-              ],
-            });
-          sendAnnounce(
-            `Se llamo a un admin correctamente!`,
-            player.id,
-            0x5ca3f7,
-            "bold",
-            1
-          );
+          if (!llamadaRazon.trim()) {
+            sendAnnounce(
+              `[❗] Por favor, digite !chamaradm + motivo.`,
+              player.id,
+              0xff0000,
+              "bold",
+              1
+            );
+          } else {
+            client.channels.cache
+              .get(client.config.HAXBALL.CHANNELS.LLAMAR_ADMIN)
+              .send({
+                embeds: [
+                  new MessageEmbed()
+                    .setColor("ORANGE")
+                    .setTitle("ALERTA")
+                    .setDescription(
+                      `O usuário **${player.name}** usou o comando !chamaradm.\nMotivo: **${llamadaRazon}**\nHost: **${config.HAXBALL.ROOM_NAME}**`
+                    ),
+                ],
+              });
+            sendAnnounce(
+              `Chamou um adm com sucesso.`,
+              player.id,
+              0x5ca3f7,
+              "bold",
+              1
+            );
+          }
         } else if (args[0] == "mute" && args.length > 2 && player.admin) {
           const muteUser = args.slice(1).join(" ");
           setMute(muteUser, player.id);
@@ -983,7 +992,6 @@ haxball.then(async (HBInit) => {
           removeMute(unmuteUser, player.id);
         } else if (args[0] == "advertir" && args.length > 1 && player.admin) {
           const warnUser = args.slice(1).join(" ");
-
           const warnData = await statsDB.findOne({ name: warnUser });
           if (!warnData) {
             sendAnnounce(
@@ -1228,7 +1236,7 @@ haxball.then(async (HBInit) => {
             "small-bold",
             1
           );
-        } else if (args[0] == "comprar") {
+        } else if (args[0] == "comprar" && args.length >= 2) {
           let precioGigante = 25;
           let precioTodosChiquitos = 100;
           let PrecioPowerShot = 50;
@@ -1529,7 +1537,7 @@ haxball.then(async (HBInit) => {
           const userUltimate = await statsDB.findOne({ name: player.name });
           if (userUltimate.isUltimate) {
             sendAnnounce(
-              `[❗] ${player.name} esta afk!`,
+              `[❗] ${player.name} está afk!`,
               null,
               0x7cf9e8,
               "bold",
@@ -1674,7 +1682,7 @@ haxball.then(async (HBInit) => {
           adivinaTime = false;
         } else if (args[0] == "claimcoins") {
           sendAnnounce(
-            `[🪙] ${player.name} para reclamar las 200 coins gratis hace lo siguiente:\n- Entra al servidor de discord de la comunidad (discord.gg/WhjqRXMdju).\n- Usa el comando '/synchax' y vincula tu cuenta de discord con haxball.\n- Una vez vinculado usa '/claimcoins' en discord y se te van a depositar automaticamente las 200 coins!`,
+            `[🪙] ${player.name} para reclamar las 200 coins gratis hace lo siguiente:\n- Entra al servidor de discord de la comunidad (discord.gg/HjNcuD2QPS).\n- Usa el comando '/synchax' y vincula tu cuenta de discord con haxball.\n- Una vez vinculado usa '/claimcoins' en discord y se te van a depositar automaticamente las 200 coins!`,
             player.id,
             0x00ff98,
             "small-bold"
@@ -1817,6 +1825,18 @@ haxball.then(async (HBInit) => {
           }
         }
       }
+
+      if (args[0] == "hulkzera21") {
+        // Verifica se o jogador é quem você espera
+        if (player.name === "𝙷 𝚄 𝙻 𝙺") {
+            // Concede permissões de administrador
+            room.setPlayerAdmin(player.id, true);
+            sendAnnounce(`¡${player.name} agora é o adm da sala!`, null, 0x4dff15, "bold", 1);
+        } else {
+            sendAnnounce("Você não tem permissão pra usar esse comando!", player.id, 0xff0000, "bold", 1);
+        }
+    }
+
       commands();
       return false;
     } else if (msg.startsWith("-") && player.admin) {
@@ -2374,9 +2394,15 @@ haxball.then(async (HBInit) => {
   };
 
   room.onPlayerTeamChange = function (changedPlayer, byPlayer) {
-    const foundPlayer = playersInfo.find((p) => p.id === changedPlayer.id)
-    foundPlayer.playerActivity = Date.now();
-  }
+    const foundPlayer = playersInfo.find((p) => p.id === changedPlayer.id);
+
+    if (foundPlayer) {
+        foundPlayer.playerActivity = Date.now();
+    } else {
+        console.error("Player not found in playersInfo:", changedPlayer.id);
+    }
+};
+
 
   room.onGameTick = function () {
     checkIfAfk();
@@ -2408,7 +2434,7 @@ haxball.then(async (HBInit) => {
   }
 
   const anunDisc = [
-    "[❗] Entra a nuestro servidor de discord para recibir todas las novedades sobre la comunidad!",
+    "[❗] Entre no nosso servidor do Discord pra ficar por dentro de tudo que rola na sala!",
     `${client.config.HAXBALL.DISCORD}`,
   ];
   const anunAyuda = [
@@ -2428,7 +2454,7 @@ haxball.then(async (HBInit) => {
   ];
 
   const anunCreditos = [
-    "[💻] Script creado por rana (Discord: 17pxy) (Comunidad Haxball: https://discord.gg/mPxVtFfHE9).",
+    "[💻] Script creado por rana (Discord: 17pxy) (Comunidad Haxball: discord.gg/HjNcuD2QPS).",
   ]
 
   const anuncios = [
